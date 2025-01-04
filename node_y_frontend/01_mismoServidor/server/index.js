@@ -42,7 +42,7 @@ app.get('/api/users', (req, res) => {
 app.post('/api/setusers', (req, res) => {
     const newUser = req.body;
     users.push(newUser);
-    res.status(201).json(newUser);
+    res.status(202).json(newUser);
   });
 
 //Respondiendo diferentes tipos de datos desde el servidor
@@ -54,7 +54,7 @@ app.get('/api/users/data1', (req, res) => {
 
 // Endpoint para retornar un JSON y un código de estado
 app.get('/api/users/data2', (req, res) => {
-  res.status(203).json({"message": "hola mundo"});
+  res.status(203).json({"message": "hola mundo que tal"});
 });
 // Endpoint para retornar un bloque HTML y mostrarlo en el DOM
 app.get('/api/users/data3', (req, res) => {

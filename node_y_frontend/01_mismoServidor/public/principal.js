@@ -4,10 +4,13 @@ btnGetUsers.addEventListener('click', async () => {
   try {
     // Hacer una petición fetch a la ruta /api/users
     const response = await fetch('/api/users');
+    //recuperar la respuesta y convertirla en en un objeto
+    //1
+    //console.log("respuesta server", response)
     const users = await response.json();
 
     // Mostrar los datos por consola
-    console.log(users);
+    console.log(users, typeof users);
   } catch (error) {
     console.error('Error:', error);
   }
@@ -24,7 +27,7 @@ btnSetUsers.addEventListener('click', async () => {
     name: 'Nuevo usuario',
     age: 20
   };
-  console.log("Data consola", newUser);
+  //console.log("Data consola", newUser);
 
   try {
     // Utiliza la API Fetch para enviar una petición POST a la ruta /api/users
@@ -35,6 +38,7 @@ btnSetUsers.addEventListener('click', async () => {
       },
       body: JSON.stringify(newUser)
     });
+    //console.log(response);
     const data = await response.json();
     console.log(data);
   } catch (error) {
