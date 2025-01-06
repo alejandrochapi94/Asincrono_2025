@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página 1</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#redirectForm');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
+
+        // Hace la solicitud GET al servidor
+        fetch('/redirect-to-p2', { method: 'GET' })
+          .then((response) => {
+            if (response.redirected) {
+              // Si el servidor redirige, actualiza manualmente la ubicación del navegador
+              window.location.href = response.url;
+            }
+          })
+          .catch((error) => {
+            console.error('Error en la redirección:', error);
+          });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Esta es la página 1</h1>
+  <form id="redirectForm">
+    <button type="submit">Ir a la Página 2</button>
+  </form>
+</body>
+</html>

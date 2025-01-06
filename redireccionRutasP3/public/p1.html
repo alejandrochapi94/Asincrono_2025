@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página 1</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mostrar la cookie en la consola
+      console.log('Cookie:', document.cookie);
+
+      const button = document.querySelector('#redirectButton');
+      button.addEventListener('click', () => {
+        // Redirigir a /p2
+        window.location.href = '/p2';
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Esta es la página 1</h1>
+  <p>Tu token ha sido generado y almacenado como una cookie. Mira la consola para verlo.</p>
+  <button id="redirectButton">Ir a la Página 2</button>
+</body>
+</html>
