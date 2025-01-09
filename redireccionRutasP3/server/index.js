@@ -18,7 +18,7 @@ function validateToken(req, res, next) {
   const token = req.cookies.authToken;
 
   if (!token) {
-    return res.redirect('/'); // Redirige a p1 si no hay token
+    return res.redirect('/p1'); // Redirige a p1 si no hay token
   }
 
   // Verifica el token
