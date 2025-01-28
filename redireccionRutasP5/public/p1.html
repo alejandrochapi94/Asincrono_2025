@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página 1</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mostrar la cookie en la consola
+      console.log('Cookie:', document.cookie);
+
+      const button = document.querySelector('#redirectButton');
+      button.addEventListener('click', () => {
+        // Realizar una petición GET al servidor para obtener el enlace de redirección
+        fetch('/get-p2-link')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('No se pudo obtener el enlace de redirección');
+            }
+            return response.json(); // Parsear la respuesta como JSON
+          })
+          .then(data => {
+            const redirectUrl = data.redirectUrl; // Extraer la URL de redirección
+            console.log('Redirigiendo a:', redirectUrl);
+            window.location.href = redirectUrl; // Redirigir al usuario
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Esta es la página 1</h1>
+  <p>Tu token ha sido generado y almacenado como una cookie. Mira la consola para verlo.</p>
+  <button id="redirectButton">Ir a la Página 2</button>
+</body>
+</html>
